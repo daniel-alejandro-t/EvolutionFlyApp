@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordatorio de Vuelo</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #007bff; color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f8f9fa; }
+        .flight-info { background-color: white; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .footer { background-color: #343a40; color: white; padding: 15px; text-align: center; }
+        .important { color: #dc3545; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛫 Recordatorio de Vuelo</h1>
+        </div>
+        
+        <div class="content">
+            <h2>Hola {{ user.get_full_name }},</h2>
+            
+            <p class="important">¡Recordatorio importante!</p>
+            
+            <p>Tu vuelo a <strong>{{ destination.name }}</strong> está programado para el <strong>{{ travel_date|date:"d de F de Y" }}</strong>, en solo <strong>2 días</strong>.</p>
+            
+            <div class="flight-info">
+                <h3>📋 Detalles de tu reserva:</h3>
+                <ul>
+                    <li><strong>Destino:</strong> {{ destination.name }} ({{ destination.code }})</li>
+                    <li><strong>Descripción:</strong> {{ destination.description }}</li>
+                    <li><strong>Fecha de viaje:</strong> {{ travel_date|date:"d de F de Y" }}</li>
+                    <li><strong>Estado:</strong> <span style="color: #28a745;">Reservado</span></li>
+                </ul>
+                
+                {% if flight_request.operator_notes %}
+                <p><strong>Notas del operador:</strong> {{ flight_request.operator_notes }}</p>
+                {% endif %}
+            </div>
+            
+            <p>📝 <strong>Recordatorios importantes:</strong></p>
+            <ul>
+                <li>Asegúrate de tener todos tus documentos de viaje en orden</li>
+                <li>Llega al aeropuerto con suficiente antelación</li>
+                <li>Revisa las regulaciones actuales de equipaje</li>
+            </ul>
+            
+            <p>¡Esperamos que tengas un excelente viaje!</p>
+        </div>
+        
+        <div class="footer">
+            <p>Equipo de Evolution Fly App<br>
+            Tu compañía de confianza para gestión de vuelos</p>
+        </div>
+    </div>
+</body>
+</html>

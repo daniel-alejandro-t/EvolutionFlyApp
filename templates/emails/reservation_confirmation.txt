@@ -1,0 +1,21 @@
+Hola {{ user.get_full_name }},
+
+¡Excelente noticia!
+
+Tu solicitud de vuelo a {{ flight_request.destination.name }} ha sido confirmada y reservada exitosamente.
+
+Detalles de tu reserva:
+- Destino: {{ flight_request.destination.name }} ({{ flight_request.destination.code }})
+- Fecha de viaje: {{ flight_request.travel_date|date:"d de F de Y" }}
+- Fecha de reserva: {{ reserved_at|date:"d de F de Y" }} a las {{ reserved_at|time:"H:i" }}
+- Reservado por: {{ reserved_by.get_full_name }}
+
+{% if flight_request.operator_notes %}
+Notas del operador: {{ flight_request.operator_notes }}
+{% endif %}
+
+Te enviaremos un recordatorio 2 días antes de tu viaje con información adicional.
+
+¡Gracias por elegir Evolution Fly App!
+
+Equipo de Evolution Fly App

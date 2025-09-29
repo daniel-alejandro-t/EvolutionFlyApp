@@ -1,0 +1,20 @@
+Hola {{ user.get_full_name }},
+
+¡Recordatorio importante!
+
+Tu vuelo a {{ destination.name }} ({{ destination.code }}) está programado para el {{ travel_date|date:"d de F de Y" }}, en solo 2 días.
+
+Detalles de tu reserva:
+- Destino: {{ destination.name }}, {{ destination.description }}
+- Fecha de viaje: {{ travel_date|date:"d de F de Y" }}
+- Estado: Reservado
+
+{% if flight_request.operator_notes %}
+Notas del operador: {{ flight_request.operator_notes }}
+{% endif %}
+
+Por favor, asegúrate de tener todos tus documentos de viaje en orden y llegar al aeropuerto con suficiente antelación.
+
+¡Buen viaje!
+
+Equipo de Evolution Fly App
